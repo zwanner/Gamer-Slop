@@ -19,7 +19,7 @@ const navConfig = [
   },
   {
     title: 'Trough',
-    path: '/404',
+    path: '/trough',
     icon: icon('trough'),
   },
 ];
