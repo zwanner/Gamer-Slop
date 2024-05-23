@@ -20,7 +20,7 @@ import SvgColor from 'src/components/svg-color';
 export default function PostCard({ post, index }) {
   const { cover, title, view, comment, share, author, createdAt } = post;
 
-  const latestPostLarge = index === 0;
+  const latestPostLarge = index >= 0;
 
   const latestPost = index === 1 || index === 2;
 
