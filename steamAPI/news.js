@@ -6,7 +6,7 @@ const gameIds = [730,570,578080,1172470,271590,252490,440,1085660,1938090,413150
 
 // Function to fetch news for a specific app ID
 async function fetchNews(appId) {
-    const url = `https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=${appId}&count=5`;
+    const url = `https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=${appId}&count=1`;
     const response = await fetch(url);
     const data = await response.json();
     return data;
@@ -22,30 +22,15 @@ async function fetchAllNews() {
     return allNews;
 }
 
-// Fetch news for all app IDs
-fetchAllNews()
-    .then((news) => {
-        console.log(news);
-        news.forEach((appNews) => {
-            appNews.appnews.newsitems.forEach((item) => {
-                console.log(item.title);
-                // console.log(item.contents);
-            });
-        });
-    })
-    .catch((error) => {
-        console.error(error);
+async function parseNews(data) {
+    return data.appnews.newsitems.map((item) => {
+        return {
+            title: item.title,
+            url: item.url,
+            date: item.date,
+            contents: item.contents
+        };
     });
-
-// fetchNews(730)
-//     .then((news) => {
-//         console.log(news);
-//         // Do something with the news data
-//         news.appnews.newsitems.forEach((item) => {
-//             console.log(item.title);
-//             console.log(item.contents);
-//         });
-//     })
-//     .catch((error) => {
-//         console.error(error);
-//     });
+}
+ 
+// Basically just need to turn this into a react thing and add the utility to create the post cards and render to the page.
