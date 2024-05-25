@@ -1,13 +1,11 @@
 import { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
-
-import { LoginView } from 'src/sections/login';
-
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
+import { LoginView } from '../sections/login';
+import { LOGIN_USER } from '../utils/mutations';
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
