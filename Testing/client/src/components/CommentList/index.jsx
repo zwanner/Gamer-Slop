@@ -1,3 +1,7 @@
+import { CardHeader, CardBody, Card } from "@chakra-ui/react";
+import { Heading } from "@chakra-ui/react";
+
+
 const CommentList = ({ comments = [] }) => {
   if (!comments.length) {
     return <h3>No Comments Yet</h3>;
@@ -12,18 +16,21 @@ const CommentList = ({ comments = [] }) => {
         Comments
       </h3>
       <div className="flex-row my-4">
+
+
         {comments &&
           comments.map((comment) => (
             <div key={comment._id} className="col-12 mb-3 pb-3">
-              <div className="p-3 bg-dark text-light">
-                <h5 className="card-header">
-                  {comment.commentAuthor} commented{' '}
+              <Card className="p-1 bg-light text-dark">
+                <CardHeader>
+                  <Heading size='md'>{comment.commentAuthor} commented{' '}</Heading>
+                  
                   <span style={{ fontSize: '0.825rem' }}>
                     on {comment.createdAt}
                   </span>
-                </h5>
-                <p className="card-body">{comment.commentText}</p>
-              </div>
+                </CardHeader>
+                <CardBody>{comment.commentText}</CardBody>
+              </Card>
             </div>
           ))}
       </div>

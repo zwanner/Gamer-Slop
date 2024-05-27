@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
 import CommentList from '../components/CommentList';
+import { Spinner } from '@chakra-ui/react'
 import CommentForm from '../components/CommentForm';
 
 import { QUERY_SINGLE_THOUGHT } from '../utils/queries';
@@ -19,11 +20,11 @@ const SingleThought = () => {
   const thought = data?.thought || {};
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Spinner />;
   }
   return (
     <div className="my-3">
-      <h3 className="card-header bg-dark text-light p-2 m-0">
+      <h3 className="card-header bg-dark text-white p-2 m-0">
         {thought.thoughtAuthor} <br />
         <span style={{ fontSize: '1rem' }}>
           had this thought on {thought.createdAt}

@@ -939,7 +939,7 @@ a:hover {
 }
 
 .bg-light-green {
-  background-color: #d9e9e8 !important;
+  background-color: #ffd0f9 !important;
 }
 
 .bg-light {
@@ -1024,7 +1024,7 @@ a:hover {
 
 .btn.btn-primary {
   background-color: #2d3e50;
-  color: #d9e9e8;
+  color: #ffd0f9;
 }
 
 .btn.btn-primary:hover {
@@ -1050,17 +1050,17 @@ a:hover {
 }
 
 .btn.btn-light {
-  background-color: #d9e9e8;
+  background-color: #ffd0f9;
   color: #1a1a1a;
 }
 
 .btn.btn-light:hover {
-  background-color: #84b8b4;
+  background-color: #fe7fed;
 }
 
 .btn.btn-dark {
   background-color: #1a1a1a;
-  color: #d9e9e8;
+  color: #ffffff;
 }
 
 .btn.btn-dark:hover {
