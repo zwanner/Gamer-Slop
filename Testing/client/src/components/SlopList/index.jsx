@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
-import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
+import { Card, CardHeader, CardBody, CardFooter, Button } from '@chakra-ui/react'
+import { BiChat, BiLike, BiShare } from 'react-icons/bi';
+import { useToast } from '@chakra-ui/react'
 
 const SlopList = ({
   slops,
@@ -7,17 +9,18 @@ const SlopList = ({
   showTitle = true,
   showUsername = true,
 }) => {
+  const toast = useToast()
   if (!slops.length) {
     return <h3>No Slop Yet</h3>;
   }
-
   return (
     <div>
+      
       {showTitle && <h3>{title}</h3>}
       {slops &&
         slops.map((slop) => (
           <Card key={slop._id} className="mb-4">
-            <CardHeader className="bg-light-green text-light p-2 m-0">
+            <CardHeader className="bg-light-green text-dark p-2 m-0">
               {showUsername ? (
                 <Link
                   className="text-dark"
@@ -35,19 +38,54 @@ const SlopList = ({
                   </span>
                 </>
               )}
-              
             </CardHeader>
-            
+
             <CardBody className="bg-light p-2">
               <p>{slop.slopText}</p>
             </CardBody>
-            <CardFooter className="bg-light p-2">
-              <Link
-                className="btn btn-dark btn-block btn-rounded"
-                to={`/slops/${slop._id}`}
+            <CardFooter className="bg-light p-2"></CardFooter>
+            <CardFooter
+              justify="space-between"
+              flexWrap="wrap"
+              sx={{
+                '& > button': {
+                  minW: '136px',
+                },
+              }}
+            >
+              {/* <Button flex="1" variant="ghost" leftIcon={<BiLike />}>
+                Like ({slop.likes || 0})
+              </Button> */}
+              <Button
+                flex="1"
+                variant="ghost"
+                leftIcon={<BiChat />}
+                onClick={() => (window.location.href = `/slops/${slop._id}`)}
               >
                 Comments
-              </Link>
+              </Button>
+              <Button
+                flex="1"
+                variant="ghost"
+                leftIcon={<BiShare />}
+                onClick={() => {
+                  const el = document.createElement('textarea');
+                  el.value = window.location.origin + '/slops/' + slop._id;
+                  document.body.appendChild(el);
+                  el.select();
+                  document.execCommand('copy');
+                  document.body.removeChild(el);
+                  toast({
+                    title: 'Link Copied To Clipboard',
+                    description: "Copied link to clipboard.",
+                    status: 'success',
+                    duration: 3000,
+                    isClosable: true,
+                  })
+                }}
+              >
+                Share
+              </Button>
             </CardFooter>
           </Card>
         ))}

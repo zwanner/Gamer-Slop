@@ -21,7 +21,8 @@ const resolvers = {
         return User.findOne({ _id: context.user._id }).populate('slops');
       }
       throw AuthenticationError;
-    },
+    }
+      
   },
 
   Mutation: {

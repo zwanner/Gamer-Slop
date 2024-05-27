@@ -19,7 +19,7 @@ const Home = () => {
         >
           <SlopForm />
         </div>
-        <div className="col mb-3">
+        <div className="col col-md mb-3">
           {loading ? (
             <Spinner size='lg'/>
           ) : (

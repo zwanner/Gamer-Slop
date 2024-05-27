@@ -38,6 +38,10 @@ const slopSchema = new Schema({
       },
     },
   ],
+  likes: {
+    type: Number,
+    default: 0,
+  },
 });
 
 const Slop = model('Slop', slopSchema);
