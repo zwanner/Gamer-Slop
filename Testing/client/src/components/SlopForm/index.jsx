@@ -2,21 +2,21 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { ADD_THOUGHT } from '../../utils/mutations';
-import { QUERY_THOUGHTS, QUERY_ME } from '../../utils/queries';
+import { ADD_SLOP } from '../../utils/mutations';
+import { QUERY_SLOPS, QUERY_ME } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
 
-const ThoughtForm = () => {
-  const [thoughtText, setThoughtText] = useState('');
+const SlopForm = () => {
+  const [slopText, setSlopText] = useState('');
 
   const [characterCount, setCharacterCount] = useState(0);
 
-  const [addThought, { error }] = useMutation
-  (ADD_THOUGHT, {
+  const [addSlop, { error }] = useMutation
+  (ADD_SLOP, {
     refetchQueries: [
-      QUERY_THOUGHTS,
-      'getThoughts',
+      QUERY_SLOPS,
+      'getSlops',
       QUERY_ME,
       'me'
     ]
@@ -25,15 +25,15 @@ const ThoughtForm = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await addThought({
+      const { data } = await addSlop({
         variables: {
-          thoughtText,
+          slopText,
           // Run the getProfile() method to get access to the unencrypted token value in order to retrieve the user's username 
           thoughtAuthor: Auth.getProfile().authenticatedPerson.username
         },
       });
 
-      setThoughtText('');
+      setSlopText('');
     } catch (err) {
       console.error(err);
     }
@@ -42,8 +42,8 @@ const ThoughtForm = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === 'thoughtText' && value.length <= 280) {
-      setThoughtText(value);
+    if (name === 'slopText' && value.length <= 280) {
+      setSlopText(value);
       setCharacterCount(value.length);
     }
   };
@@ -67,8 +67,8 @@ const ThoughtForm = () => {
           >
             <div className="col-12 col-lg-9">
               <textarea
-                name="thoughtText"
-                value={thoughtText}
+                name="slopText"
+                value={slopText}
                 className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
@@ -97,4 +97,4 @@ const ThoughtForm = () => {
   );
 };
 
-export default ThoughtForm;
+export default SlopForm;

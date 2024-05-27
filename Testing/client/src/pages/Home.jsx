@@ -1,14 +1,14 @@
 import { useQuery } from '@apollo/client';
 
-import ThoughtList from '../components/ThoughtList';
-import ThoughtForm from '../components/ThoughtForm';
+import SlopList from '../components/SlopList';
+import SlopForm from '../components/SlopForm';
 
-import { QUERY_THOUGHTS } from '../utils/queries';
+import { QUERY_SLOPS } from '../utils/queries';
 import { Spinner } from '@chakra-ui/react'
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_THOUGHTS);
-  const thoughts = data?.thoughts || [];
+  const { loading, data } = useQuery(QUERY_SLOPS);
+  const slops = data?.slops || [];
 
   return (
     <main>
@@ -17,14 +17,14 @@ const Home = () => {
           className="col col-lg-12 mb-3 p-3"
           style={{ border: '1px dotted #1a1a1a' }}
         >
-          <ThoughtForm />
+          <SlopForm />
         </div>
         <div className="col mb-3">
           {loading ? (
             <Spinner size='lg'/>
           ) : (
-            <ThoughtList
-              thoughts={thoughts}
+            <SlopList
+              slops={slops}
             />
           )}
         </div>

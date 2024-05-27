@@ -6,18 +6,18 @@ import CommentList from '../components/CommentList';
 import { Spinner } from '@chakra-ui/react'
 import CommentForm from '../components/CommentForm';
 
-import { QUERY_SINGLE_THOUGHT } from '../utils/queries';
+import { QUERY_SINGLE_SLOP } from '../utils/queries';
 
-const SingleThought = () => {
+const SingleSlop = () => {
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
-  const { thoughtId } = useParams();
+  const { slopId } = useParams();
 
-  const { loading, data } = useQuery(QUERY_SINGLE_THOUGHT, {
+  const { loading, data } = useQuery(QUERY_SINGLE_SLOP, {
     // pass URL parameter
-    variables: { thoughtId: thoughtId },
+    variables: { slopId: slopId },
   });
 
-  const thought = data?.thought || {};
+  const slop = data?.slop || {};
 
   if (loading) {
     return <Spinner size="lg"/>;
@@ -25,9 +25,9 @@ const SingleThought = () => {
   return (
     <div className="my-3">
       <h3 className="card-header bg-light-green text-dark p-2 m-0">
-        {thought.thoughtAuthor} <br />
+        {slop.slopAuthor} <br />
         <span style={{ fontSize: '1rem' }}>
-          {thought.createdAt}
+          {slop.createdAt}
         </span>
       </h3>
       <div className="bg-light py-4">
@@ -40,17 +40,17 @@ const SingleThought = () => {
             lineHeight: '1.5',
           }}
         >
-          {thought.thoughtText}
+          {slop.slopText}
         </blockquote>
       </div>
       <div className="my-5">
-        <CommentList comments={thought.comments} />
+        <CommentList comments={slop.comments} />
       </div>
       <div className="m-3 p-4" style={{ border: '1px dotted #1a1a1a' }}>
-        <CommentForm thoughtId={thought._id} />
+        <CommentForm slopId={slop._id} />
       </div>
     </div>
   );
 };
 
-export default SingleThought;
+export default SingleSlop;

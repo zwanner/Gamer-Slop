@@ -1,24 +1,24 @@
-const { User, Thought } = require('../models');
+const { User, Slop } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate('thoughts');
+      return User.find().populate('slops');
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('thoughts');
+      return User.findOne({ username }).populate('slops');
     },
-    thoughts: async (parent, { username }) => {
+    slops: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return Thought.find(params).sort({ createdAt: -1 });
+      return Slop.find(params).sort({ createdAt: -1 });
     },
-    thought: async (parent, { thoughtId }) => {
-      return Thought.findOne({ _id: thoughtId });
+    slop: async (parent, { slopId }) => {
+      return Slop.findOne({ _id: slopId });
     },
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate('thoughts');
+        return User.findOne({ _id: context.user._id }).populate('slops');
       }
       throw AuthenticationError;
     },
@@ -47,26 +47,26 @@ const resolvers = {
 
       return { token, user };
     },
-    addThought: async (parent, { thoughtText }, context) => {
+    addSlop: async (parent, { slopText }, context) => {
       if (context.user) {
-        const thought = await Thought.create({
-          thoughtText,
-          thoughtAuthor: context.user.username,
+        const slop = await Slop.create({
+          slopText,
+          slopAuthor: context.user.username,
         });
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { thoughts: thought._id } }
+          { $addToSet: { slops: slop._id } }
         );
 
-        return thought;
+        return slop;
       }
       throw AuthenticationError;
     },
-    addComment: async (parent, { thoughtId, commentText }, context) => {
+    addComment: async (parent, { slopId, commentText }, context) => {
       if (context.user) {
-        return Thought.findOneAndUpdate(
-          { _id: thoughtId },
+        return Slop.findOneAndUpdate(
+          { _id: slopId },
           {
             $addToSet: {
               comments: { commentText, commentAuthor: context.user.username },
@@ -80,26 +80,26 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    removeThought: async (parent, { thoughtId }, context) => {
+    removeSlop: async (parent, { slopId }, context) => {
       if (context.user) {
-        const thought = await Thought.findOneAndDelete({
-          _id: thoughtId,
-          thoughtAuthor: context.user.username,
+        const slop = await Slop.findOneAndDelete({
+          _id: slopId,
+          slopAuthor: context.user.username,
         });
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { thoughts: thought._id } }
+          { $pull: { slops: slop._id } }
         );
 
-        return thought;
+        return slop;
       }
       throw AuthenticationError;
     },
-    removeComment: async (parent, { thoughtId, commentId }, context) => {
+    removeComment: async (parent, { slopId, commentId }, context) => {
       if (context.user) {
-        return Thought.findOneAndUpdate(
-          { _id: thoughtId },
+        return Slop.findOneAndUpdate(
+          { _id: slopId },
           {
             $pull: {
               comments: {

@@ -3,10 +3,10 @@ import { Helmet } from 'react-helmet-async';
 
 import { BlogView } from 'src/sections/blog/view';
 
-import ThoughtList from '../components/ThoughtList';
-import ThoughtForm from '../components/ThoughtForm';
+import SlopList from '../components/SlopList';
+import SlopForm from '../components/SlopForm';
 
-import { QUERY_THOUGHTS } from '../utils/queries';
+import { QUERY_SLOPS } from '../utils/queries';
 
 // ----------------------------------------------------------------------
 

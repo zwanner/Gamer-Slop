@@ -1,37 +1,37 @@
 import { Link } from 'react-router-dom';
 import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
 
-const ThoughtList = ({
-  thoughts,
+const SlopList = ({
+  slops,
   title,
   showTitle = true,
   showUsername = true,
 }) => {
-  if (!thoughts.length) {
+  if (!slops.length) {
     return <h3>No Slop Yet</h3>;
   }
 
   return (
     <div>
       {showTitle && <h3>{title}</h3>}
-      {thoughts &&
-        thoughts.map((thought) => (
-          <Card key={thought._id} className="mb-4">
+      {slops &&
+        slops.map((slop) => (
+          <Card key={slop._id} className="mb-4">
             <CardHeader className="bg-light-green text-light p-2 m-0">
               {showUsername ? (
                 <Link
                   className="text-dark"
-                  to={`/profiles/${thought.thoughtAuthor}`}
+                  to={`/profiles/${slop.slopAuthor}`}
                 >
-                  {thought.thoughtAuthor} <br />
+                  {slop.slopAuthor} <br />
                   <span style={{ fontSize: '1rem' }}>
-                    {thought.createdAt}
+                    {slop.createdAt}
                   </span>
                 </Link>
               ) : (
                 <>
                   <span style={{ fontSize: '1rem' }}>
-                    {thought.createdAt}
+                    {slop.createdAt}
                   </span>
                 </>
               )}
@@ -39,12 +39,12 @@ const ThoughtList = ({
             </CardHeader>
             
             <CardBody className="bg-light p-2">
-              <p>{thought.thoughtText}</p>
+              <p>{slop.slopText}</p>
             </CardBody>
             <CardFooter className="bg-light p-2">
               <Link
                 className="btn btn-dark btn-block btn-rounded"
-                to={`/thoughts/${thought._id}`}
+                to={`/slops/${slop._id}`}
               >
                 Comments
               </Link>
@@ -55,4 +55,4 @@ const ThoughtList = ({
   );
 };
 
-export default ThoughtList;
+export default SlopList;
