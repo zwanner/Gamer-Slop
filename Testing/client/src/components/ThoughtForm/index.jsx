@@ -50,7 +50,7 @@ const ThoughtForm = () => {
 
   return (
     <div>
-      <h3>Create new Slop</h3>
+      <h3>CREATE NEW SLOP</h3>
 
       {Auth.loggedIn() ? (
         <>
@@ -59,7 +59,7 @@ const ThoughtForm = () => {
               characterCount === 500 || error ? 'text-danger' : ''
             }`}
           >
-            Character Count: {characterCount}/500
+            CHARACTER COUNT: {characterCount}/500
           </p>
           <form
             className="flex-row justify-center justify-space-between-md align-center"
@@ -77,7 +77,7 @@ const ThoughtForm = () => {
 
             <div className="col-12 col-lg-3">
               <button className="btn btn-primary btn-block py-3" type="submit">
-                Add Slop
+                ADD SLOP
               </button>
             </div>
             {error && (
