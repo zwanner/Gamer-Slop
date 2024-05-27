@@ -15,7 +15,7 @@ const Footer = () => {
           </button>
         )}
         <h4>
-          GAMER SLOP
+          ~~~ GAMER SLOP ~~~
         </h4>
       </div>
     </footer>
