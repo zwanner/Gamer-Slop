@@ -5,48 +5,58 @@
     "password": "password01"
   },
   {
-    "username": "Max Kanat-Alexander",
-    "email": "mkanatalexander@techfriends.dev",
-    "password": "password02"
+    "username": "Bry-The-UnPearable",
+    "email": "bryan@email.com",
+    "password": "password01"
   },
   {
-    "username": "Why The Lucky Stiff",
-    "email": "wtls@techfriends.dev",
+    "username": "Jazzle-Dazzle",
+    "email": "jasmine@email.com",
+    "password": "password3"
+  },
+  {
+    "username": "Hobbi-ist",
+    "email": "sal@email.com",
+    "password": "password77"
+  },
+  {
+    "username": "Crowen",
+    "email": "owen@email.com",
+    "password": "passyword"
+  },
+  {
+    "username": "Joe-Nolan",
+    "email": "nolan@email.com",
+    "password": "tacos"
+  },
+  {
+    "username": "Jen",
+    "email": "jen@email.com",
     "password": "password03"
   },
   {
-    "username": "Kent Beck",
-    "email": "kbeck@techfriends.dev",
-    "password": "password04"
+    "username": "Stevious",
+    "email": "steve@email.com",
+    "password": "tennis"
   },
   {
-    "username": "Edward V. Berard",
-    "email": "evberard@techfriends.dev",
-    "password": "password05"
+    "username": "grammargirl",
+    "email": "gramma@email.com",
+    "password": "Wowzers"
   },
   {
-    "username": "Alan Kay",
-    "email": "akay@techfriends.dev",
-    "password": "password06"
+    "username": "taco-tuesday",
+    "email": "taco@email.com",
+    "password": "burrito"
   },
   {
-    "username": "C.A.R. Hoare",
-    "email": "choare@techfriends.dev",
-    "password": "password07"
+    "username": "perturbed-penguin",
+    "email": "penguin@email.com",
+    "password": "pengy"
   },
   {
-    "username": "David Thomas",
-    "email": "dthomas@techfriends.dev",
-    "password": "password08"
-  },
-  {
-    "username": "Donald Knuth",
-    "email": "dknuth@techfriends.dev",
-    "password": "password09"
-  },
-  {
-    "username": "Lernantino",
-    "email": "lernantino@techfriends.dev",
-    "password": "password10"
+    "username": "bard",
+    "email": "bard@email.com",
+    "password": "wozers"
   }
 ]
