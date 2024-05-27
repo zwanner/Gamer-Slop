@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
 
 const ThoughtList = ({
   thoughts,
@@ -7,7 +8,7 @@ const ThoughtList = ({
   showUsername = true,
 }) => {
   if (!thoughts.length) {
-    return <h3>No Thoughts Yet</h3>;
+    return <h3>No Slop Yet</h3>;
   }
 
   return (
@@ -15,11 +16,11 @@ const ThoughtList = ({
       {showTitle && <h3>{title}</h3>}
       {thoughts &&
         thoughts.map((thought) => (
-          <div key={thought._id} className="card card-rounded mb-3">
-            <h4 className="card-header bg-primary text-light p-2 m-0">
+          <Card key={thought._id} className="mb-4">
+            <CardHeader className="bg-light-green text-light p-2 m-0">
               {showUsername ? (
                 <Link
-                  className="text-light"
+                  className="text-dark"
                   to={`/profiles/${thought.thoughtAuthor}`}
                 >
                   {thought.thoughtAuthor} <br />
@@ -34,17 +35,21 @@ const ThoughtList = ({
                   </span>
                 </>
               )}
-            </h4>
-            <div className="card-body bg-light p-2">
+              
+            </CardHeader>
+            
+            <CardBody className="bg-light p-2">
               <p>{thought.thoughtText}</p>
-            </div>
-            <Link
-              className="btn btn-primary btn-block btn-squared"
-              to={`/thoughts/${thought._id}`}
-            >
-              Comments
-            </Link>
-          </div>
+            </CardBody>
+            <CardFooter className="bg-light p-2">
+              <Link
+                className="btn btn-dark btn-block btn-rounded"
+                to={`/thoughts/${thought._id}`}
+              >
+                Comments
+              </Link>
+            </CardFooter>
+          </Card>
         ))}
     </div>
   );

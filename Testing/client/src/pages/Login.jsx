@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
+import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
+import { Heading } from '@chakra-ui/react';
 
 import Auth from '../utils/auth';
 
@@ -43,9 +45,9 @@ const Login = (props) => {
   return (
     <main className="flex-row justify-center mb-4">
       <div className="col-12 col-lg-10">
-        <div className="card card-rounded">
-          <h4 className="card-header bg-light text-dark p-2">Login</h4>
-          <div className="card-body">
+        <Card className="card-rounded p-2 box-shadow">
+          <CardHeader className="bg-light text-dark p-3"><Heading size='md'>LOGIN</Heading></CardHeader>
+          <CardBody>
             {data ? (
               <p>
                 Success! You may now head{' '}
@@ -70,12 +72,13 @@ const Login = (props) => {
                   onChange={handleChange}
                 />
                 <button
-                  className="btn btn-block btn-primary"
+                  className="btn btn-block btn-dark"
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >
                   Submit
                 </button>
+
               </form>
             )}
 
@@ -84,8 +87,8 @@ const Login = (props) => {
                 {error.message}
               </div>
             )}
-          </div>
-        </div>
+          </CardBody>
+        </Card>
       </div>
     </main>
   );
