@@ -26,7 +26,7 @@ const Profile = () => {
   }
 
   if (loading) {
-    return <Spinner />;
+    return <Spinner size='lg' />;
   }
 
   if (!user?.username) {
@@ -41,7 +41,7 @@ const Profile = () => {
   return (
     <div>
       <div className="flex-row justify-center mb-3">
-        <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
+        <h2 className="col-12 col-md-10 bg-light-green text-dark p-3 mb-5">
           Viewing {userParam ? `${user.username}'s` : 'your'} profile.
         </h2>
 

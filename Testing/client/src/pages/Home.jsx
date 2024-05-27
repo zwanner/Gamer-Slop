@@ -21,7 +21,7 @@ const Home = () => {
         </div>
         <div className="col mb-3">
           {loading ? (
-            <Spinner />
+            <Spinner size='lg'/>
           ) : (
             <ThoughtList
               thoughts={thoughts}
