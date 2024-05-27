@@ -4,6 +4,7 @@ import ThoughtList from '../components/ThoughtList';
 import ThoughtForm from '../components/ThoughtForm';
 
 import { QUERY_THOUGHTS } from '../utils/queries';
+import { Spinner } from '@chakra-ui/react'
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_THOUGHTS);
@@ -20,7 +21,7 @@ const Home = () => {
         </div>
         <div className="col mb-3">
           {loading ? (
-            <div>Loading...</div>
+            <Spinner />
           ) : (
             <ThoughtList
               thoughts={thoughts}

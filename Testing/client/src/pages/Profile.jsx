@@ -5,6 +5,7 @@ import ThoughtForm from '../components/ThoughtForm';
 import ThoughtList from '../components/ThoughtList';
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import { Spinner } from '@chakra-ui/react'
 
 import Auth from '../utils/auth';
 
@@ -25,7 +26,7 @@ const Profile = () => {
   }
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Spinner />;
   }
 
   if (!user?.username) {
