@@ -10,5 +10,16 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(function(registration) {
+            console.log('Service Worker registered with scope:', registration.scope);
+          });
+          navigator.serviceWorker.ready.then(function(registration) {
+            console.log('Service Worker ready with scope:', registration.scope);
+          });
+      }   
+    </script>
   </body>
 </html>
