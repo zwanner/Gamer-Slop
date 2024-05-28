@@ -3,6 +3,9 @@
  ![License](https://img.shields.io/badge/License-MIT-blue.svg)
  
  Gamer Slop is a web app that allows users to read, post, and discuss video games or game news.
+
+[Live Site}(https://gamer-slop.onrender.com/)
+ 
 ## Table of Contents
  * [Installation](#installation)
  * [Usage](#usage)
