@@ -77,6 +77,7 @@ const SlopList = ({
                   document.body.removeChild(el);
                   toast({
                     title: 'Link Copied To Clipboard',
+                    description: "Copied link to clipboard.",
                     status: 'success',
                     duration: 3000,
                     isClosable: true,
